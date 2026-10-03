@@ -2,8 +2,10 @@ package com.example.subscriptions.model;
 
 import java.time.Period;
 
+/**
+ * Тариф абонемента. Каждая константа сама вычисляет стоимость периода.
+ */
 public enum Tariff {
-
 
     ONE_TIME("Разовый") {
         @Override
@@ -61,11 +63,19 @@ public enum Tariff {
         this.title = title;
     }
 
+    /** Название тарифа. */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Стоимость периода по тарифу.
+     *
+     * @param period отрезок времени
+     * @return стоимость в рублях
+     */
     public abstract int priceFor(Period period);
 
+    /** Срок по умолчанию при покупке. */
     public abstract Period defaultPeriod();
 }
